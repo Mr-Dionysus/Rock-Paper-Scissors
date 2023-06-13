@@ -10,39 +10,72 @@ function getComputerChoice() {
     }
 }
 
+let playerCounter = 0;
+let computerCounter = 0;
+
 function round(playerSelection, computerSelection = getComputerChoice()) {
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
 
     switch (true) {
         case playerSelection === "ROCK" && computerSelection === "PAPER":
-            return `You lose! Paper beats Rock!`;
+            computerCounter++;
+            return `You lose! Paper beats Rock! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "PAPER" && computerSelection === "ROCK":
-            return `You won! Paper beats Rock!`;
+            playerCounter++;
+            return `You won! Paper beats Rock! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "ROCK" && computerSelection === "SCISSORS":
-            return `You won! Rock beats Scissors!`;
+            playerCounter++;
+            return `You won! Rock beats Scissors! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "SCISSORS" && computerSelection === "ROCK":
-            return `You lose! Rock beats Scissors`;
+            computerCounter++;
+            return `You lose! Rock beats Scissors! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "PAPER" && computerSelection === "SCISSORS":
-            return `You lose! Scissors beats Paper!`;
+            computerCounter++;
+            return `You lose! Scissors beats Paper! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "SCISSORS" && computerSelection === "PAPER":
-            return `You won! Scissors beats Paper!`;
+            playerCounter++;
+            return `You won! Scissors beats Paper! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "ROCK" && computerSelection === "ROCK":
-            return `It's tie! Rock can't beats Rock!`;
+            return `It's tie! Rock can't beats Rock! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "PAPER" && computerSelection === "PAPER":
-            return `It's tie! Paper can't beats Paper!`;
+            return `It's tie! Paper can't beats Paper! Player = ${playerCounter}. Computer = ${computerCounter}`;
         case playerSelection === "SCISSORS" && computerSelection === "SCISSORS":
-            return `It's tie! Scissors can't beats Scissors!`;
+            return `It's tie! Scissors can't beats Scissors! Player = ${playerCounter}. Computer = ${computerCounter}`;
     }
 }
 
 function game() {
-    let playerCounter = 0;
-    let computerCounter = 0;
     let i = 0;
 
     while (i < 5) {
-        round("paper", "rock");
+        console.log(
+            round(
+                prompt("Choose Rock, Paper or Scissors"),
+                (computerSelection = getComputerChoice())
+            )
+        );
         i++;
     }
+
+    switch (true) {
+        case playerCounter > computerCounter:
+            console.log(
+                `After 5 rounds you won! Player = ${playerCounter}. Computer = ${computerCounter}`
+            );
+            break;
+        case computerCounter > playerCounter:
+            console.log(
+                `After 5 rounds you lose! Player = ${playerCounter}. Computer = ${computerCounter}`
+            );
+            break;
+        case playerCounter === computerCounter:
+            console.log(
+                `After 5 rounds it's tie! Player = ${playerCounter}. Computer = ${computerCounter}`
+            );
+            break;
+    }
+
+    playerCounter = 0;
+    computerCounter = 0;
 }
