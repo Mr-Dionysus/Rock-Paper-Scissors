@@ -1,3 +1,6 @@
+let playerCounter = 0;
+let computerCounter = 0;
+
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
     switch (randomNum) {
@@ -9,9 +12,6 @@ function getComputerChoice() {
             return "Scissors";
     }
 }
-
-let playerCounter = 0;
-let computerCounter = 0;
 
 function round(playerSelection, computerSelection = getComputerChoice()) {
     playerSelection = playerSelection.toUpperCase();
@@ -45,37 +45,46 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
     }
 }
 
-function game() {
-    let i = 0;
+const weapons = document.querySelectorAll("body button");
+weapons.forEach((weapon) => {
+    weapon.addEventListener("click", () => {
+        playerSelection = weapon.value;
+        console.log(playerSelection);
+        console.log(round(playerSelection, getComputerChoice()));
+    });
+});
 
-    while (i < 5) {
-        console.log(
-            round(
-                prompt("Choose Rock, Paper or Scissors"),
-                (computerSelection = getComputerChoice())
-            )
-        );
-        i++;
-    }
+// function game() {
+//     let i = 0;
 
-    switch (true) {
-        case playerCounter > computerCounter:
-            console.log(
-                `After 5 rounds you won! Player = ${playerCounter}. Computer = ${computerCounter}`
-            );
-            break;
-        case computerCounter > playerCounter:
-            console.log(
-                `After 5 rounds you lose! Player = ${playerCounter}. Computer = ${computerCounter}`
-            );
-            break;
-        case playerCounter === computerCounter:
-            console.log(
-                `After 5 rounds it's tie! Player = ${playerCounter}. Computer = ${computerCounter}`
-            );
-            break;
-    }
+//     while (i < 5) {
+//         console.log(
+//             round(
+//                 prompt("Choose Rock, Paper or Scissors"),
+//                 (computerSelection = getComputerChoice())
+//             )
+//         );
+//         i++;
+//     }
 
-    playerCounter = 0;
-    computerCounter = 0;
-}
+//     switch (true) {
+//         case playerCounter > computerCounter:
+//             console.log(
+//                 `After 5 rounds you won! Player = ${playerCounter}. Computer = ${computerCounter}`
+//             );
+//             break;
+//         case computerCounter > playerCounter:
+//             console.log(
+//                 `After 5 rounds you lose! Player = ${playerCounter}. Computer = ${computerCounter}`
+//             );
+//             break;
+//         case playerCounter === computerCounter:
+//             console.log(
+//                 `After 5 rounds it's tie! Player = ${playerCounter}. Computer = ${computerCounter}`
+//             );
+//             break;
+//     }
+
+//     playerCounter = 0;
+//     computerCounter = 0;
+// }
