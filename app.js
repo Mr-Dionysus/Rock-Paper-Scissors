@@ -1,5 +1,6 @@
 let playerCounter = 0;
 let computerCounter = 0;
+let playerSelection = "";
 
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
@@ -45,12 +46,20 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
     }
 }
 
+const results = document.querySelector("#results");
 const weapons = document.querySelectorAll("body button");
+
 weapons.forEach((weapon) => {
     weapon.addEventListener("click", () => {
+        const child = results.firstChild;
+        if (child != null) {
+            results.removeChild(child);
+        }
+
         playerSelection = weapon.value;
-        console.log(playerSelection);
-        console.log(round(playerSelection, getComputerChoice()));
+        const h1Results = document.createElement("h1");
+        h1Results.textContent = round(playerSelection, getComputerChoice());
+        results.appendChild(h1Results);
     });
 });
 
