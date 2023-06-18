@@ -48,52 +48,33 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
 
 const results = document.querySelector("#results");
 const weapons = document.querySelectorAll("body button");
+const chooseWeaponH1 = document.querySelector("#results h1");
 
 weapons.forEach((weapon) => {
     weapon.addEventListener("click", () => {
-        const child = results.firstChild;
+        chooseWeaponH1.remove();
+        const child = results.lastChild;
         if (child != null) {
             results.removeChild(child);
         }
 
         playerSelection = weapon.value;
         const h1Results = document.createElement("h1");
-        h1Results.textContent = round(playerSelection, getComputerChoice());
+        let end = round(playerSelection, getComputerChoice());
+
+        if (playerCounter === 5 && playerCounter > computerCounter) {
+            end = `You won! P ${playerCounter} | PC ${computerCounter}`;
+            playerCounter = 0;
+            computerCounter = 0;
+        }
+
+        if (computerCounter === 5 && computerCounter > playerCounter) {
+            end = `You lose! P ${playerCounter} | PC ${computerCounter}`;
+            playerCounter = 0;
+            computerCounter = 0;
+        }
+
+        h1Results.textContent = end;
         results.appendChild(h1Results);
     });
 });
-
-// function game() {
-//     let i = 0;
-
-//     while (i < 5) {
-//         console.log(
-//             round(
-//                 prompt("Choose Rock, Paper or Scissors"),
-//                 (computerSelection = getComputerChoice())
-//             )
-//         );
-//         i++;
-//     }
-
-//     switch (true) {
-//         case playerCounter > computerCounter:
-//             console.log(
-//                 `After 5 rounds you won! Player = ${playerCounter}. Computer = ${computerCounter}`
-//             );
-//             break;
-//         case computerCounter > playerCounter:
-//             console.log(
-//                 `After 5 rounds you lose! Player = ${playerCounter}. Computer = ${computerCounter}`
-//             );
-//             break;
-//         case playerCounter === computerCounter:
-//             console.log(
-//                 `After 5 rounds it's tie! Player = ${playerCounter}. Computer = ${computerCounter}`
-//             );
-//             break;
-//     }
-
-//     playerCounter = 0;
-//     computerCounter = 0;
-// }

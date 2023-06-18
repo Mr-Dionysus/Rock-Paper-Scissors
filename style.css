@@ -1,0 +1,31 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+section {
+    align-items: center;
+    width: 50%;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 0px;
+    border: 0px solid;
+    background-color: white;
+}
+
+#results {
+    margin-bottom: 20px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    border: 2px solid black;
+}
