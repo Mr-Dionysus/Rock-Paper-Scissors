@@ -1,7 +1,10 @@
 let playerCounter = 0;
 let computerCounter = 0;
 let playerSelection = "";
-
+let playerCounterSpan = document.createElement("span");
+let divideSpan = document.createElement("span");
+let computerCounterSpan = document.createElement("span");
+divideSpan.textContent = " | ";
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
     switch (randomNum) {
@@ -17,64 +20,111 @@ function getComputerChoice() {
 function round(playerSelection, computerSelection = getComputerChoice()) {
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
-
+    const h1 = document.createElement("h1");
+    h1.textContent = "";
+    results.appendChild(h1);
     switch (true) {
         case playerSelection === "ROCK" && computerSelection === "PAPER":
             computerCounter++;
-            return `You lose! Paper beats Rock! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+        // return `P ${playerCounter} | PC ${computerCounter}`;
         case playerSelection === "PAPER" && computerSelection === "ROCK":
             playerCounter++;
-            return `You won! Paper beats Rock! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+
         case playerSelection === "ROCK" && computerSelection === "SCISSORS":
             playerCounter++;
-            return `You won! Rock beats Scissors! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+
         case playerSelection === "SCISSORS" && computerSelection === "ROCK":
             computerCounter++;
-            return `You lose! Rock beats Scissors! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+
         case playerSelection === "PAPER" && computerSelection === "SCISSORS":
             computerCounter++;
-            return `You lose! Scissors beats Paper! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+
         case playerSelection === "SCISSORS" && computerSelection === "PAPER":
             playerCounter++;
-            return `You won! Scissors beats Paper! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+
         case playerSelection === "ROCK" && computerSelection === "ROCK":
-            return `It's tie! Rock can't beats Rock! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+
         case playerSelection === "PAPER" && computerSelection === "PAPER":
-            return `It's tie! Paper can't beats Paper! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
+
         case playerSelection === "SCISSORS" && computerSelection === "SCISSORS":
-            return `It's tie! Scissors can't beats Scissors! Player = ${playerCounter}. Computer = ${computerCounter}`;
+            playerCounterSpan.textContent = playerCounter;
+            computerCounterSpan.textContent = computerCounter;
+            h1.replaceChildren(playerCounterSpan, divideSpan, computerCounter);
+            break;
     }
 }
 
 const results = document.querySelector("#results");
-const weapons = document.querySelectorAll("body button");
+const weapons = document.querySelectorAll("section button");
 const chooseWeaponH1 = document.querySelector("#results h1");
+const restart = document.querySelector("#restart");
+
+restart.addEventListener("click", () => {
+    playerCounter = 0;
+    computerCounter = 0;
+    const restartH1 = document.querySelector("#results h1");
+    restartH1.textContent = "Choose your weapon!";
+});
 
 weapons.forEach((weapon) => {
     weapon.addEventListener("click", () => {
         chooseWeaponH1.remove();
+
         const child = results.lastChild;
         if (child != null) {
             results.removeChild(child);
         }
 
         playerSelection = weapon.value;
-        const h1Results = document.createElement("h1");
-        let end = round(playerSelection, getComputerChoice());
-
+        // const h1Results = document.createElement("h1");
+        round(playerSelection, getComputerChoice());
+        const h1Results = document.querySelector("h1");
         if (playerCounter === 5 && playerCounter > computerCounter) {
-            end = `You won! P ${playerCounter} | PC ${computerCounter}`;
+            playerCounterSpan.style.background = "green";
+            end = `You won! ${playerCounter} | ${computerCounter}`;
             playerCounter = 0;
             computerCounter = 0;
         }
 
         if (computerCounter === 5 && computerCounter > playerCounter) {
-            end = `You lose! P ${playerCounter} | PC ${computerCounter}`;
+            end = `You lose! ${playerCounter} | ${computerCounter}`;
             playerCounter = 0;
             computerCounter = 0;
         }
 
-        h1Results.textContent = end;
-        results.appendChild(h1Results);
+        // h1Results.textContent = end;
+        // results.appendChild(h1Results);
     });
 });
