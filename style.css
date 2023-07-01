@@ -1,16 +1,28 @@
+html {
+    background: linear-gradient(to bottom right, blue, pink);
+}
+
+h1 {
+    letter-spacing: 0.05em;
+}
+
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f1faee80;
 }
 
 section {
     align-items: center;
+    justify-content: space-around;
     width: 50%;
     text-align: center;
+    background: #f1faee63;
+    border-radius: 100px;
+    padding: 5px;
+    margin-top: 100px;
 }
 
 button {
@@ -18,6 +30,24 @@ button {
     padding: 0px;
     border: 0px solid;
     border-radius: 100%;
+    transition: transform 0.3s linear;
+    background: #f1faee63;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+/* Animation for buttons when click */
+.click-animation {
+    transform: translateY(-15px);
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.286);
+    cursor: pointer;
 }
 
 #restart {
@@ -25,37 +55,137 @@ button {
     border-radius: 30px;
     padding: 10px;
     font-size: 1.5em;
-    transition: scale 0.3s;
+    transition: background 0.3s ease-in-out;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.281);
+    letter-spacing: 0.05em;
+    transform: none;
+}
+#restart:hover {
+    background: rgba(0, 0, 0, 0.17);
 }
 
+svg {
+    position: relative;
+    bottom: 45px;
+    left: 160px;
+    width: 20px;
+    border-radius: 100%;
+    transition: background 0.3s;
+}
+
+svg:hover {
+    background: rgba(255, 255, 0, 0.574);
+}
+
+.pop-up-menu {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    top: 170px;
+    left: 720px;
+    border-radius: 35px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.439);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    text-align: left;
+    transition: 0.3s opacity, 0.3s visibility;
+    z-index: 1;
+}
+
+.pop-up-menu h3 {
+    font-size: 1em;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.6);
+    margin-top: 10px;
+}
+
+.pop-up-menu ul {
+    text-align: left;
+    padding-left: 20px;
+    letter-spacing: 0.05em;
+    font-size: 1em;
+    list-style: none;
+}
+/* Show pop up when hover svg img */
+svg:hover + .pop-up-menu {
+    opacity: 1;
+    visibility: visible;
+}
+/* Results of the game */
 #results {
     margin-bottom: 20px;
 }
 
-img {
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
-    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.286);
-    transition: scale 0.3s;
+span {
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.281);
 }
 
-img:hover,
-#restart:hover {
-    scale: 1.1;
+.win-background {
+    animation: 1s linear 0s win-background;
 }
 
-@media (max-width: 414px) {
+.lose-background {
+    animation: 1s linear 0s lose-background;
+}
+
+.tie-background {
+    animation: 1s linear 0s tie-background;
+}
+
+@keyframes win-background {
+    to {
+        background: #c7f9cc;
+    }
+}
+
+@keyframes lose-background {
+    to {
+        background: #e639477c;
+    }
+}
+
+@keyframes tie-background {
+    to {
+        background: #f4a261;
+    }
+}
+
+/* Divider */
+span:nth-child(2) {
+    box-shadow: none;
+    margin: 0px 10px;
+    padding: 10px 5px;
+    background: #f4a361dc;
+}
+/* Empty div for placing Restart on the next line */
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+footer {
+    margin-top: auto;
+    display: flex;
+}
+
+@media (max-width: 706px) {
+    h1 {
+        padding-top: 20px;
+        width: 200px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 470px) {
     img {
-        height: 100px;
-        width: 100px;
+        height: 200px;
+        width: 200px;
     }
 
     section {
-        width: 300px;
-    }
-
-    h1 {
-        margin-bottom: 300px;
+        width: 250px;
     }
 }
