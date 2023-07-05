@@ -1,8 +1,12 @@
 html {
-    background: linear-gradient(to bottom right, blue, pink);
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1 {
+    width: 100%;
+    margin: auto;
     letter-spacing: 0.05em;
 }
 
@@ -12,22 +16,24 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to bottom right, blue, pink);
 }
 
 section {
+    width: 70%;
+    padding: 5px;
+    margin: auto 0px 0px 0px;
     align-items: center;
     justify-content: space-around;
-    width: 50%;
     text-align: center;
     background: #f1faee63;
-    border-radius: 100px;
-    padding: 5px;
-    margin-top: 100px;
+    border-radius: 120px;
 }
 
 button {
-    margin: 10px;
+    height: 100%;
     padding: 0px;
+    margin: 10px;
     border: 0px solid;
     border-radius: 100%;
     transition: transform 0.3s linear;
@@ -43,8 +49,8 @@ button:hover {
 }
 
 img {
-    height: 200px;
-    width: 200px;
+    height: 180px;
+    width: 180px;
     border-radius: 100px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.286);
     cursor: pointer;
@@ -80,21 +86,21 @@ svg:hover {
 
 .pop-up-menu {
     position: absolute;
+    top: 35%;
+    left: 56%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 35px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+    text-align: left;
+    z-index: 1;
     opacity: 0;
     visibility: hidden;
-    top: 170px;
-    left: 720px;
-    border-radius: 35px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.439);
-    background: rgba(255, 255, 255, 0.8);
-    padding: 15px;
-    text-align: left;
     transition: 0.3s opacity, 0.3s visibility;
-    z-index: 1;
 }
 
 .pop-up-menu h3 {
-    font-size: 1em;
+    font-size: 1.3em;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.6);
     margin-top: 10px;
@@ -104,7 +110,7 @@ svg:hover {
     text-align: left;
     padding-left: 20px;
     letter-spacing: 0.05em;
-    font-size: 1em;
+    font-size: 1.2em;
     list-style: none;
 }
 /* Show pop up when hover svg img */
@@ -171,21 +177,28 @@ footer {
     display: flex;
 }
 
-@media (max-width: 706px) {
+@media (max-width: 885px) {
+    svg {
+        visibility: hidden;
+    }
+
     h1 {
+        width: 80%;
         padding-top: 20px;
-        width: 200px;
-        margin: auto;
     }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 593px) {
     img {
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
     }
 
-    section {
-        width: 250px;
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #restart {
+        font-size: 1.4em;
     }
 }
