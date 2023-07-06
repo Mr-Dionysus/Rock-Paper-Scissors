@@ -100,7 +100,7 @@ svg:hover {
 }
 
 .pop-up-menu h3 {
-    font-size: 1.3em;
+    font-size: 1.2em;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.6);
     margin-top: 10px;
@@ -110,7 +110,7 @@ svg:hover {
     text-align: left;
     padding-left: 20px;
     letter-spacing: 0.05em;
-    font-size: 1.2em;
+    font-size: 1.1em;
     list-style: none;
 }
 /* Show pop up when hover svg img */
@@ -120,7 +120,7 @@ svg:hover + .pop-up-menu {
 }
 /* Results of the game */
 #results {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 span {
@@ -130,15 +130,23 @@ span {
 }
 
 .win-background {
-    animation: 1s linear 0s win-background;
+    animation: 0.5s linear 0s win-background;
 }
 
 .lose-background {
-    animation: 1s linear 0s lose-background;
+    animation: 0.5s linear 0s lose-background;
 }
 
-.tie-background {
-    animation: 1s linear 0s tie-background;
+.win-color {
+    animation: 1s linear 0s win-color;
+}
+
+.lose-color {
+    animation: 1s linear 0s lose-color;
+}
+
+.tie-color {
+    animation: 0.5s linear 0s tie-color;
 }
 
 @keyframes win-background {
@@ -153,9 +161,24 @@ span {
     }
 }
 
-@keyframes tie-background {
-    to {
-        background: #f4a261;
+@keyframes win-color {
+    50% {
+        box-shadow: 0px 0px 15px 10px #c7f9cc;
+    }
+}
+
+@keyframes lose-color {
+    50% {
+        box-shadow: 0px 0px 15px 10px #e639477c;
+    }
+}
+
+@keyframes tie-color {
+    0% {
+        color: black;
+    }
+    50% {
+        color: #f4a261;
     }
 }
 
@@ -164,7 +187,7 @@ span:nth-child(2) {
     box-shadow: none;
     margin: 0px 10px;
     padding: 10px 5px;
-    background: #f4a361dc;
+    transition: 10s color;
 }
 /* Empty div for placing Restart on the next line */
 .break {
@@ -177,9 +200,23 @@ footer {
     display: flex;
 }
 
+@media (min-width: 886px) {
+    section {
+        width: 700px;
+    }
+
+    #results {
+        margin-top: 20px;
+    }
+}
+
 @media (max-width: 885px) {
-    svg {
+    svg,
+    .pop-up-menu {
         visibility: hidden;
+        left: 0px;
+        height: 0px;
+        width: 0px;
     }
 
     h1 {
@@ -195,10 +232,45 @@ footer {
     }
 
     h1 {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
 
     #restart {
         font-size: 1.4em;
+    }
+}
+
+@media (max-width: 508px) {
+    section {
+        height: 90%;
+        width: 55%;
+    }
+
+    #lower-part {
+        height: 70%;
+    }
+
+    img {
+        height: 120px;
+        width: 120px;
+    }
+
+    button {
+        height: auto;
+    }
+
+    #restart {
+        margin-top: auto;
+    }
+}
+
+@media (max-width: 354px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    img {
+        height: 100px;
+        width: 100px;
     }
 }

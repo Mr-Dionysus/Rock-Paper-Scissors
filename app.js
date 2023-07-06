@@ -22,6 +22,13 @@ function getComputerChoice() {
 function round(playerSelection, computerSelection = getComputerChoice()) {
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
+    //Delete previous classes
+    divideSpan.classList.remove("tie-color");
+    playerCounterSpan.classList.remove("win-color");
+    playerCounterSpan.classList.remove("lose-color");
+    computerCounterSpan.classList.remove("win-color");
+    computerCounterSpan.classList.remove("lose-color");
+
     const h1 = document.createElement("h1");
     h1.textContent = "";
     results.appendChild(h1);
@@ -35,6 +42,8 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
+            playerCounterSpan.classList.add("lose-color");
+            computerCounterSpan.classList.add("win-color");
             break;
 
         case playerSelection === "PAPER" && computerSelection === "ROCK":
@@ -46,6 +55,8 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
+            playerCounterSpan.classList.add("win-color");
+            computerCounterSpan.classList.add("lose-color");
             break;
 
         case playerSelection === "ROCK" && computerSelection === "SCISSORS":
@@ -57,6 +68,8 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
+            playerCounterSpan.classList.add("win-color");
+            computerCounterSpan.classList.add("lose-color");
             break;
 
         case playerSelection === "SCISSORS" && computerSelection === "ROCK":
@@ -68,6 +81,8 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
+            playerCounterSpan.classList.add("lose-color");
+            computerCounterSpan.classList.add("win-color");
             break;
 
         case playerSelection === "PAPER" && computerSelection === "SCISSORS":
@@ -79,6 +94,8 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
+            playerCounterSpan.classList.add("lose-color");
+            computerCounterSpan.classList.add("win-color");
             break;
 
         case playerSelection === "SCISSORS" && computerSelection === "PAPER":
@@ -90,6 +107,8 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
+            playerCounterSpan.classList.add("win-color");
+            computerCounterSpan.classList.add("lose-color");
             break;
 
         case playerSelection === "ROCK" && computerSelection === "ROCK":
@@ -100,14 +119,7 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
-            divideSpan.classList.add("tie-background");
-            setTimeout(() => {
-                divideSpan.classList.remove("tie-background");
-            }, 800);
-
-            setTimeout(() => {
-                divideSpan.style.background = "#f4a261";
-            }, 700);
+            divideSpan.classList.add("tie-color");
             break;
 
         case playerSelection === "PAPER" && computerSelection === "PAPER":
@@ -118,14 +130,7 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
-            divideSpan.classList.add("tie-background");
-            setTimeout(() => {
-                divideSpan.classList.remove("tie-background");
-            }, 800);
-
-            setTimeout(() => {
-                divideSpan.style.background = "#f4a261";
-            }, 700);
+            divideSpan.classList.add("tie-color");
             break;
 
         case playerSelection === "SCISSORS" && computerSelection === "SCISSORS":
@@ -136,14 +141,7 @@ function round(playerSelection, computerSelection = getComputerChoice()) {
                 divideSpan,
                 computerCounterSpan
             );
-            divideSpan.classList.add("tie-background");
-            setTimeout(() => {
-                divideSpan.classList.remove("tie-background");
-            }, 800);
-
-            setTimeout(() => {
-                divideSpan.style.background = "#f4a261";
-            }, 700);
+            divideSpan.classList.add("tie-color");
             break;
     }
 }
@@ -191,12 +189,10 @@ weapons.forEach((weapon) => {
                 setTimeout(() => {
                     playerCounterSpan.classList.remove("win-background");
                     computerCounterSpan.classList.remove("lose-background");
-                }, 800);
-
-                setTimeout(() => {
                     playerCounterSpan.style.background = "#c7f9cc";
                     computerCounterSpan.style.background = "#e639477c";
-                }, 700);
+                }, 500);
+
                 playerCounter = 0;
                 computerCounter = 0;
             }
@@ -207,12 +203,10 @@ weapons.forEach((weapon) => {
                 setTimeout(() => {
                     playerCounterSpan.classList.remove("lose-background");
                     computerCounterSpan.classList.remove("win-background");
-                }, 800);
-
-                setTimeout(() => {
                     playerCounterSpan.style.background = "#e639477c";
                     computerCounterSpan.style.background = "#c7f9cc";
-                }, 700);
+                }, 500);
+
                 playerCounter = 0;
                 computerCounter = 0;
             }
@@ -231,14 +225,17 @@ weapons.forEach((weapon) => {
     window.addEventListener("keydown", (e) => {
         switch (true) {
             case e.code === "Digit1" && weapon.value === "rock":
+                e.target.blur();
                 weapon.click();
                 break;
 
             case e.code === "Digit2" && weapon.value === "scissors":
+                e.target.blur();
                 weapon.click();
                 break;
 
             case e.code === "Digit3" && weapon.value === "paper":
+                e.target.blur();
                 weapon.click();
                 break;
 
