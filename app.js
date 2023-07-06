@@ -6,7 +6,7 @@ let playerCounterSpan = document.createElement("span");
 let divideSpan = document.createElement("span");
 divideSpan.textContent = " | ";
 let computerCounterSpan = document.createElement("span");
-//Computer's logic
+// Computer's Logic
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
     switch (randomNum) {
@@ -18,20 +18,21 @@ function getComputerChoice() {
             return "Scissors";
     }
 }
-//Check who won round
+// Check Who Won Round
 function round(playerSelection, computerSelection = getComputerChoice()) {
     playerSelection = playerSelection.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
-    //Delete previous classes
+    // Delete Previous Classes
     divideSpan.classList.remove("tie-color");
     playerCounterSpan.classList.remove("win-color");
     playerCounterSpan.classList.remove("lose-color");
     computerCounterSpan.classList.remove("win-color");
     computerCounterSpan.classList.remove("lose-color");
-
+    // Show Round or Game Results on the Screen
     const h1 = document.createElement("h1");
     h1.textContent = "";
     results.appendChild(h1);
+    // Check Who Won Round, Add Score to the Screen and Add Animation
     switch (true) {
         case playerSelection === "ROCK" && computerSelection === "PAPER":
             computerCounter++;
@@ -152,7 +153,7 @@ const chooseWeaponH1 = document.querySelector("#results h1");
 let restartH1 = document.querySelector("#results h1");
 const restart = document.querySelector("#restart");
 const svg = document.querySelector("svg");
-
+// Restart Logic
 restart.addEventListener("click", () => {
     playerCounter = 0;
     computerCounter = 0;
@@ -168,13 +169,13 @@ weapons.forEach((weapon) => {
             setTimeout(() => {
                 weapon.classList.remove("click-animation");
             }, 500);
-
+            // Set Default Backgrounds
             playerCounterSpan.style.background = "#f1faee63";
             computerCounterSpan.style.background = "#f1faee63";
             divideSpan.style.background = "none";
+            // Delete Placeholder, Choose and Delete Previous Results
             chooseWeaponH1.remove();
             const child = results.lastChild;
-
             if (child != null) {
                 results.removeChild(child);
             }
@@ -182,7 +183,7 @@ weapons.forEach((weapon) => {
             playerSelection = weapon.value;
             round(playerSelection, getComputerChoice());
             const h1Results = document.querySelector("h1");
-
+            // If Player Won add animations
             if (playerCounter === 5 && playerCounter > computerCounter) {
                 playerCounterSpan.classList.add("win-background");
                 computerCounterSpan.classList.add("lose-background");
@@ -196,7 +197,7 @@ weapons.forEach((weapon) => {
                 playerCounter = 0;
                 computerCounter = 0;
             }
-
+            // If Computer Won add animations
             if (computerCounter === 5 && computerCounter > playerCounter) {
                 playerCounterSpan.classList.add("lose-background");
                 computerCounterSpan.classList.add("win-background");
@@ -210,7 +211,7 @@ weapons.forEach((weapon) => {
                 playerCounter = 0;
                 computerCounter = 0;
             }
-
+            // Change SVG Place
             if (
                 document.querySelector("#results h1").textContent !==
                 "Choose your weapon!"
@@ -221,7 +222,7 @@ weapons.forEach((weapon) => {
             }
         }
     });
-
+    // Keyboard Support
     window.addEventListener("keydown", (e) => {
         switch (true) {
             case e.code === "Digit1" && weapon.value === "rock":
