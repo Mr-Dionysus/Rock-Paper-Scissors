@@ -153,6 +153,7 @@ const chooseWeaponH1 = document.querySelector("#results h1");
 let restartH1 = document.querySelector("#results h1");
 const restart = document.querySelector("#restart");
 const svg = document.querySelector("svg");
+const popUp = document.querySelector(".pop-up-menu");
 // Restart Logic
 restart.addEventListener("click", () => {
     playerCounter = 0;
@@ -217,6 +218,7 @@ weapons.forEach((weapon) => {
                 "Choose your weapon!"
             ) {
                 svg.style.left = "85px";
+                popUp.style.left = "49%";
             } else {
                 svg.style.left = "160px";
             }
