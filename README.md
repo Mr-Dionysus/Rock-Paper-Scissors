@@ -12,6 +12,11 @@
 -   При наведении на Restart меняется цвет фона;
 -   Счет показывает, кто выиграл и кто проиграл по достижении 5 очков, при помощи зеленого и красного фонов. Оранжевый фон у разделителя означатает, что была ничья в раунде.
 
+### Можно добавить:
+
+-   Счет, в котором отображается последние 10 игр;
+-   Темы;
+
 # Project "Rock Paper Scissors"
 
 Project "Rock Paper Scissors" created with starting info from https://www.theodinproject.com They give you starter project's info and then creating the project lies only on me.
@@ -25,3 +30,8 @@ Project "Rock Paper Scissors" created with starting info from https://www.theodi
 -   Hover on rock, scissors and paper will scale image;
 -   Hover on Restart will change background;
 -   Score show who won and who lose when score of user or computer become equal 5 with green and red backgrounds. Orange background on divider show that there was tie in the round.
+
+### Can Add:
+
+-   Table with scores from previous 10 games;
+-   Themes;
