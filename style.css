@@ -77,11 +77,11 @@ svg {
     left: 160px;
     width: 20px;
     border-radius: 100%;
-    transition: background 0.3s;
+    transition: box-shadow 0.3s;
 }
 
 svg:hover {
-    background: rgba(255, 255, 0, 0.574);
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 0, 0.574);
 }
 
 .pop-up-menu {
